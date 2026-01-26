@@ -1,0 +1,139 @@
+/* FOOTER */
+.footer-section {
+    width: 100%;
+    background-color: #101828;
+    padding: 70px 0 30px;
+}
+
+/* LOGO */
+.footer-logo {
+    height: 50px;
+}
+
+/* TITULOS */
+.footer-title {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* TEXTO */
+.footer-text {
+    color: #d1d5dc;
+    font-size: 0.9rem;
+    display: block;
+}
+
+/* CONTACTO */
+.footer-contact span {
+    display: block;
+    color: #d1d5dc;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.footer-contact i {
+    color: #51a2ff;
+    margin-right: 8px;
+}
+
+/* LINKS */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #d1d5dc;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: #51a2ff;
+}
+
+/* INPUT */
+.footer-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 30px;
+    border: none;
+    background-color: #1e2939;
+    color: #ffffff;
+}
+
+.footer-input::placeholder {
+    color: #9ca3af;
+}
+
+/* BOTON */
+.footer-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    background-color: #155dfc;
+    color: #ffffff;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.footer-btn:hover {
+    background-color: #0f4ad1;
+}
+
+/* DIVIDER */
+.footer-divider {
+    border-color: rgba(255,255,255,0.1);
+}
+
+/* BOTTOM */
+.footer-bottom-text,
+.footer-bottom-links a {
+    color: #d1d5dc;
+    font-size: 0.85rem;
+}
+
+.footer-bottom-links a {
+    text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+    color: #51a2ff;
+}
+
+/* SOCIALS */
+.footer-socials a {
+    color: #d1d5dc;
+    font-size: 1.2rem;
+    margin: 0 8px;
+}
+
+.footer-socials a:hover {
+    color: #51a2ff;
+}
+
+/* HOURS */
+.footer-hours-title {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.footer-hours-text {
+    color: #d1d5dc;
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .footer-bottom-text,
+    .footer-bottom-links {
+        text-align: center !important;
+    }
+}
