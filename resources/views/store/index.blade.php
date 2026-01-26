@@ -35,4 +35,26 @@
 
 @include('partials.footer')
 
+<script>
+function sendWhatsapp(productId) {
+    const qty = document.getElementById('qty-' + productId).value;
+
+    const products = @json($products->keyBy('id'));
+
+    const product = products[productId];
+
+    let message =
+        `Hola, deseo comprar el siguiente producto:\n\n` +
+        `📌 Producto: ${product.name}\n` +
+        `💰 Precio unitario: $ ${product.price}\n` +
+        `📦 Cantidad: ${qty}\n` +
+        `💵 Total: $ ${product.price * qty}\n\n` +
+        `¿Está disponible?`;
+
+    const url = `https://wa.me/{{ config('app.whatsapp_number') }}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, '_blank');
+}
+</script>
+
 @endsection

@@ -7,3 +7,5 @@ document.querySelectorAll('.view-btn').forEach(btn => {
         container.classList.toggle('products-list', btn.dataset.view === 'list');
     });
 });
+
+

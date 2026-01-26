@@ -28,11 +28,10 @@
             <div class="col-lg-3 col-md-6">
                 <h6 class="footer-title">Quick Links</h6>
                 <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Productos</a></li>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Contáctanos</a></li>
-                    <li><a href="#">Tienda</a></li>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/tienda">Tienda</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                    <li><a href="/programacion">Programación</a></li>
                 </ul>
             </div>
 
@@ -73,7 +72,7 @@
 
             <!-- IZQUIERDA -->
             <div class="col-lg-4 text-start footer-bottom-text">
-                © 2026 TechWorld Laptops. All rights reserved
+                © 2026 {{$company->name}}. Todos los derechos reservados
             </div>
 
             <!-- CENTRO -->
@@ -86,8 +85,8 @@
 
             <!-- DERECHA -->
             <div class="col-lg-4 text-end footer-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#" class="ms-3">Terms of Service</a>
+                <a href="/politicas">Políticas de privacidad</a>
+                <a href="/terminos" class="ms-3">Términos y condiciones</a>
             </div>
 
         </div>
@@ -99,7 +98,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <span class="footer-hours-title">
-                    Business Hours:
+                    Horario de atención:
                 </span>
                 <br>
                 <span class="footer-hours-text">

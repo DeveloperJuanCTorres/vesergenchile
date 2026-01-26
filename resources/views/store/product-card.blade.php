@@ -11,9 +11,7 @@
                     <!-- IMAGEN -->
                     <div class="product-image-wrapper">
                         <span class="product-badge">PROMO</span>
-                        @php
-                            $images = collect(json_decode($product->images));
-                        @endphp
+                        
                         <img src="{{ asset('storage/' . $images->first()) }}" class="product-image" alt="Producto">
                     </div>
 
@@ -55,7 +53,10 @@
 
                         <!-- BOTONES -->
                         <div class="d-flex gap-2">
-                            <a href="#" class="btn btn-outline-dark w-50 product-btn-info">
+                            <a href="#"
+                            class="btn btn-outline-dark w-50 product-btn-info"
+                            data-bs-toggle="modal"
+                            data-bs-target="#productModal-{{ $product->id }}">
                                 Más información
                             </a>
                             
