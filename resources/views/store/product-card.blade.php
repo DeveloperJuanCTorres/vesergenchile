@@ -43,7 +43,7 @@
                         <!-- PRECIO + STOCK -->
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span class="product-price">
-                                $ {{$product->price}}
+                                $ {{ number_format($product->price, 3) }}
                             </span>
 
                             <span class="product-stock">

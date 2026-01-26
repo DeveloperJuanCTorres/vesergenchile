@@ -145,7 +145,7 @@
                         <!-- PRECIO + STOCK -->
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span class="product-price">
-                                $ {{$product->price}}
+                                $ {{ number_format($product->price, 3) }}
                             </span>
 
                             <span class="product-stock">
@@ -238,7 +238,7 @@
                                     </p>
 
                                     <h4 class="mt-3 text-success">
-                                        $ {{ number_format($product->price, 2) }}
+                                        $ {{ number_format($product->price, 3) }}
                                     </h4>
 
                                     <p class="text-muted">
