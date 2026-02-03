@@ -12,7 +12,7 @@
         <div class="row gy-4">
 
             <!-- COLUMNA 1 -->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <span class="footer-text">
                     {{$company->description}}
                 </span>
@@ -25,8 +25,8 @@
             </div>
 
             <!-- COLUMNA 2 -->
-            <div class="col-lg-3 col-md-6">
-                <h6 class="footer-title">Quick Links</h6>
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-title">Enlaces</h6>
                 <ul class="footer-links">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/tienda">Tienda</a></li>
@@ -36,7 +36,7 @@
             </div>
 
             <!-- COLUMNA 3 -->
-            <div class="col-lg-3 col-md-6">
+            <!-- <div class="col-lg-3 col-md-6">
                 <h6 class="footer-title">Categorías</h6>
                 <ul class="footer-links">
                     <li><a href="#">Gaming Laptops</a></li>
@@ -45,14 +45,14 @@
                     <li><a href="#">Budget Laptops</a></li>
                     <li><a href="#">Creative Laptops</a></li>
                 </ul>
-            </div>
+            </div> -->
 
             <!-- COLUMNA 4 -->
-            <div class="col-lg-3 col-md-6">
-                <h6 class="footer-title">Stay Updated</h6>
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-title">Manténgase actualizado</h6>
 
                 <span class="footer-text">
-                    Subscribe to our newsletter for the latest deals and tech news
+                    Suscríbete a nuestro boletín para recibir las últimas ofertas y novedades tecnológicas.
                 </span>
 
                 <input type="email" class="footer-input mt-3" placeholder="Enter your email">
