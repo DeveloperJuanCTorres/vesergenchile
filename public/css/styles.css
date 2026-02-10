@@ -541,23 +541,21 @@
 
 
 
-.description-content.collapsed {
-    max-height: 7.5em; /* ≈ 500 chars */
-    overflow: hidden;
+.description-content {
     position: relative;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
-.description-content.collapsed::after {
-    content: '...';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: white;
-    padding-left: 10px;
+/* estado colapsado */
+.description-content.collapsed {
+    -webkit-line-clamp: 6; /* ≈ 500 caracteres */
 }
 
+/* expandido */
 .description-content.expanded {
-    max-height: none;
+    -webkit-line-clamp: unset;
 }
 
 

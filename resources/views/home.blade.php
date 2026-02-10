@@ -408,14 +408,12 @@
             const maxChars = parseInt(wrapper.dataset.maxChars || 500);
             const content = wrapper.querySelector('.description-content');
 
-            const fullHTML = content.innerHTML;
             const temp = document.createElement('div');
-            temp.innerHTML = fullHTML;
+            temp.innerHTML = content.innerHTML;
 
-            const textLength = temp.textContent.trim().length;
+            if (temp.textContent.trim().length <= maxChars) return;
 
-            if (textLength <= maxChars) return;
-
+            // 🔥 colapsar desde el inicio
             content.classList.add('collapsed');
 
             const toggle = document.createElement('a');
@@ -425,6 +423,7 @@
 
             toggle.addEventListener('click', () => {
                 const expanded = content.classList.toggle('expanded');
+                content.classList.toggle('collapsed');
                 toggle.textContent = expanded ? 'Leer menos' : 'Leer más';
             });
 
@@ -433,6 +432,7 @@
 
     });
 </script>
+
 
 
 
