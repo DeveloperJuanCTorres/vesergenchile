@@ -59,7 +59,7 @@ class StoreController extends Controller
         }
 
         return view('store.index', [
-            'products' => $query->paginate(12)->withQueryString(),
+            'products' => $query->paginate(9)->withQueryString(),
             'brands' => Brand::all(),
             'categories' => Taxonomy::all(),
             'company' => Company::first()
