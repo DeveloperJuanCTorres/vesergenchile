@@ -424,7 +424,7 @@
             toggle.addEventListener('click', () => {
                 const expanded = content.classList.toggle('expanded');
                 content.classList.toggle('collapsed');
-                toggle.textContent = expanded ? 'Leer menos' : 'Leer más';
+                toggle.textContent = expanded ? 'Ocultar Descripción' : 'Leer Descripción';
             });
 
             wrapper.appendChild(toggle);
