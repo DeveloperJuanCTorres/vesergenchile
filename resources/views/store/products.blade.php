@@ -80,9 +80,18 @@
                                     <strong>Categoría:</strong> {{ $product->taxonomy->name ?? 'General' }}
                                 </p>
 
-                                <p class="mt-3">
-                                    {!! Str::markdown($product->description) !!}
-                                </p>
+                                <!-- <p class="mt-3">
+                                     Str::markdown(product->description) 
+                                </p> -->
+
+                                <div class="product-description mt-3"
+                                    data-max-chars="500">
+
+                                    <div class="description-content">
+                                        {!! Str::markdown($product->description) !!}
+                                    </div>
+
+                                </div>
 
                                 <h4 class="mt-3 text-success">
                                     $ {{ number_format($product->price, 2) }}
