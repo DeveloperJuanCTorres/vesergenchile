@@ -36,9 +36,9 @@
                         </h6>
 
                         <!-- DESCRIPCION -->
-                        <p class="product-description">
-                            {!! Str::markdown($product->description) !!}
-                        </p>
+                        <!-- <p class="product-description">
+                             Str::markdown(product->description) 
+                        </p> -->
 
                         <!-- PRECIO + STOCK -->
                         <div class="d-flex justify-content-between align-items-center mb-3">

@@ -539,3 +539,20 @@
     display: none;
 }
 
+
+
+.product-description {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.toggle-description {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.toggle-description:hover {
+    text-decoration: underline;
+}
+
+

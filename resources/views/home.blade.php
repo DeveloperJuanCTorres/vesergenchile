@@ -138,9 +138,9 @@
                         </h6>
 
                         <!-- DESCRIPCION -->
-                        <p class="product-description">
-                            {!! Str::markdown($product->description) !!}
-                        </p>
+                        <!-- <p class="product-description">
+                             Str::markdown(product->description) 
+                        </p> -->
 
                         <!-- PRECIO + STOCK -->
                         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -233,9 +233,39 @@
                                         <strong>Categoría:</strong> {{ $product->taxonomy->name ?? 'General' }}
                                     </p>
 
-                                    <p class="mt-3">
-                                        {!! Str::markdown($product->description) !!}
-                                    </p>
+                                    <!-- <p class="mt-3">
+                                         Str::markdown(product->description) 
+                                    </p> -->
+                                    @php
+                                        $htmlDescription = Str::markdown($product->description);
+
+                                        // Contar palabras SIN etiquetas HTML
+                                        $plainText = strip_tags($htmlDescription);
+                                        $wordCount = str_word_count($plainText);
+
+                                        // Cortar a 500 palabras
+                                        $words = preg_split('/\s+/', $plainText);
+                                        $shortText = implode(' ', array_slice($words, 0, 500));
+                                    @endphp
+
+                                    <div class="product-description mt-3">
+
+                                        <div class="description-short">
+                                            {!! nl2br(e($shortText)) !!}…
+                                        </div>
+
+                                        <div class="description-full d-none">
+                                            {!! $htmlDescription !!}
+                                        </div>
+
+                                        @if($wordCount > 500)
+                                            <a href="javascript:void(0)"
+                                            class="toggle-description text-primary fw-semibold mt-2 d-inline-block">
+                                                Leer más
+                                            </a>
+                                        @endif
+
+                                    </div>
 
                                     <h4 class="mt-3 text-success">
                                         $ {{ number_format($product->price, 3) }}
@@ -389,6 +419,25 @@
 
         window.open(url, '_blank');
     }
+</script>
+
+<script>
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('toggle-description')) {
+
+            const container = e.target.closest('.product-description');
+            const shortDesc = container.querySelector('.description-short');
+            const fullDesc = container.querySelector('.description-full');
+
+            shortDesc.classList.toggle('d-none');
+            fullDesc.classList.toggle('d-none');
+
+            e.target.textContent =
+                e.target.textContent === 'Leer más'
+                ? 'Leer menos'
+                : 'Leer más';
+        }
+    });
 </script>
 
 
