@@ -237,17 +237,14 @@
                                          Str::markdown(product->description) 
                                     </p> -->
                                     <div class="product-description mt-3"
-                                        data-max-words="500">
+                                        data-max-chars="500">
 
-                                        <div class="description-content collapsed">
+                                        <div class="description-content">
                                             {!! Str::markdown($product->description) !!}
                                         </div>
 
-                                        <a href="javascript:void(0)"
-                                        class="toggle-description text-primary fw-semibold mt-2 d-inline-block">
-                                            Leer más
-                                        </a>
                                     </div>
+
 
                                     <h4 class="mt-3 text-success">
                                         $ {{ number_format($product->price, 3) }}
@@ -404,29 +401,59 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-        document.querySelectorAll('.product-description').forEach(wrapper => {
+    document.querySelectorAll('.product-description').forEach(wrapper => {
 
-            const content = wrapper.querySelector('.description-content');
-            const toggle = wrapper.querySelector('.toggle-description');
+        const maxChars = parseInt(wrapper.dataset.maxChars || 500);
+        const content = wrapper.querySelector('.description-content');
 
-            // Si el contenido NO excede el alto, no mostrar botón
-            if (content.scrollHeight <= content.offsetHeight) {
-                toggle.style.display = 'none';
-                content.classList.remove('collapsed');
-                return;
-            }
+        const fullHTML = content.innerHTML.trim();
+        const temp = document.createElement('div');
+        temp.innerHTML = fullHTML;
 
-            toggle.addEventListener('click', () => {
-                const expanded = content.classList.toggle('expanded');
-                content.classList.toggle('collapsed', !expanded);
-                toggle.textContent = expanded ? 'Leer menos' : 'Leer más';
-            });
+        const fullText = temp.textContent.trim();
+
+        if (fullText.length <= maxChars) return;
+
+        let visibleText = fullText.slice(0, maxChars);
+        let hiddenText = fullText.slice(maxChars);
+
+        // Crear elementos
+        const visibleSpan = document.createElement('span');
+        visibleSpan.textContent = visibleText;
+
+        const hiddenSpan = document.createElement('span');
+        hiddenSpan.textContent = hiddenText;
+        hiddenSpan.style.display = 'none';
+
+        const dots = document.createElement('span');
+        dots.textContent = '... ';
+
+        const toggle = document.createElement('span');
+        toggle.textContent = 'Leer más';
+        toggle.className = 'read-more';
+
+        toggle.addEventListener('click', () => {
+            const expanded = hiddenSpan.style.display === 'none';
+            hiddenSpan.style.display = expanded ? 'inline' : 'none';
+            dots.style.display = expanded ? 'none' : 'inline';
+            toggle.textContent = expanded ? 'Leer menos' : 'Leer más';
         });
 
+        // Limpiar y reconstruir
+        content.innerHTML = '';
+        content.appendChild(visibleSpan);
+        content.appendChild(dots);
+        content.appendChild(hiddenSpan);
+        content.appendChild(document.createElement('br'));
+        content.appendChild(toggle);
+
     });
+
+});
 </script>
+
 
 
 
