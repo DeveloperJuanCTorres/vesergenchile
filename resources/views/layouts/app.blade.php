@@ -9,6 +9,10 @@
 
     <title>{{ config('app.name', 'Grupo Vesergenchile') }}</title>
 
+    <?php
+        $version = '1993.3.7';
+    ?>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -21,9 +25,9 @@
 
 
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}?v=<?php echo $version ?>">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=<?php echo $version ?>">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}?v=<?php echo $version ?>">
 
     <!-- Scripts -->
     <!-- vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
