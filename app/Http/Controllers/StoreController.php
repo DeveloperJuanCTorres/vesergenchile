@@ -38,30 +38,33 @@ class StoreController extends Controller
     {
         $query = Product::query();
 
-        $query->when($request->filled('search'), fn ($q) =>
-            $q->where('name', 'like', "%{$request->search}%")
-        );
+        // 🔎 BUSCADOR POR NOMBRE
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
 
-        $query->when($request->filled('price'), fn ($q) =>
-            $q->where('price', '<=', $request->price)
-        );
+        // 💰 FILTRO POR PRECIO
+        if ($request->price) {
+            $query->where('price', '<=', $request->price);
+        }
 
-        $query->when($request->filled('brand'), fn ($q) =>
-            $q->where('brand_id', $request->brand)
-        );
+        // 🏷️ FILTRO POR MARCA
+        if ($request->brand) {
+            $query->where('brand_id', $request->brand);
+        }
 
-        $query->when($request->filled('category'), fn ($q) =>
-            $q->where('taxonomy_id', $request->category)
-        );
+        // 📂 FILTRO POR CATEGORIA
+        if ($request->category) {
+            $query->where('taxonomy_id', $request->category);
+        }
 
         return view('store.index', [
-            'products' => $query->paginate(12),
+            'products' => $query->paginate(12)->withQueryString(),
             'brands' => Brand::all(),
             'categories' => Taxonomy::all(),
-            'company' => Company::first(),
+            'company' => Company::first()
         ]);
     }
-
 
 
     public function show($slug)
