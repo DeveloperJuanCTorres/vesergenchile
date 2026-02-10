@@ -236,35 +236,17 @@
                                     <!-- <p class="mt-3">
                                          Str::markdown(product->description) 
                                     </p> -->
-                                    @php
-                                        $htmlDescription = Str::markdown($product->description);
+                                    <div class="product-description mt-3"
+                                        data-max-words="500">
 
-                                        // Contar palabras SIN etiquetas HTML
-                                        $plainText = strip_tags($htmlDescription);
-                                        $wordCount = str_word_count($plainText);
-
-                                        // Cortar a 500 palabras
-                                        $words = preg_split('/\s+/', $plainText);
-                                        $shortText = implode(' ', array_slice($words, 0, 500));
-                                    @endphp
-
-                                    <div class="product-description mt-3">
-
-                                        <div class="description-short">
-                                            {!! nl2br(e($shortText)) !!}…
+                                        <div class="description-content collapsed">
+                                            {!! Str::markdown($product->description) !!}
                                         </div>
 
-                                        <div class="description-full d-none">
-                                            {!! $htmlDescription !!}
-                                        </div>
-
-                                        @if($wordCount > 500)
-                                            <a href="javascript:void(0)"
-                                            class="toggle-description text-primary fw-semibold mt-2 d-inline-block">
-                                                Leer más
-                                            </a>
-                                        @endif
-
+                                        <a href="javascript:void(0)"
+                                        class="toggle-description text-primary fw-semibold mt-2 d-inline-block">
+                                            Leer más
+                                        </a>
                                     </div>
 
                                     <h4 class="mt-3 text-success">
@@ -422,23 +404,30 @@
 </script>
 
 <script>
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('toggle-description')) {
+    document.addEventListener('DOMContentLoaded', () => {
 
-            const container = e.target.closest('.product-description');
-            const shortDesc = container.querySelector('.description-short');
-            const fullDesc = container.querySelector('.description-full');
+        document.querySelectorAll('.product-description').forEach(wrapper => {
 
-            shortDesc.classList.toggle('d-none');
-            fullDesc.classList.toggle('d-none');
+            const content = wrapper.querySelector('.description-content');
+            const toggle = wrapper.querySelector('.toggle-description');
 
-            e.target.textContent =
-                e.target.textContent === 'Leer más'
-                ? 'Leer menos'
-                : 'Leer más';
-        }
+            // Si el contenido NO excede el alto, no mostrar botón
+            if (content.scrollHeight <= content.offsetHeight) {
+                toggle.style.display = 'none';
+                content.classList.remove('collapsed');
+                return;
+            }
+
+            toggle.addEventListener('click', () => {
+                const expanded = content.classList.toggle('expanded');
+                content.classList.toggle('collapsed', !expanded);
+                toggle.textContent = expanded ? 'Leer menos' : 'Leer más';
+            });
+        });
+
     });
 </script>
+
 
 
 @endsection

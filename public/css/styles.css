@@ -541,18 +541,18 @@
 
 
 
-.product-description {
-    font-size: 15px;
-    line-height: 1.6;
+.product-description .description-content {
+    overflow: hidden;
+    transition: max-height .4s ease;
 }
 
-.toggle-description {
-    cursor: pointer;
-    text-decoration: none;
+.product-description .description-content.collapsed {
+    max-height: 220px; /* ≈ 500 palabras visuales */
 }
 
-.toggle-description:hover {
-    text-decoration: underline;
+.product-description .description-content.expanded {
+    max-height: 5000px;
 }
+
 
 
