@@ -419,7 +419,7 @@
             const toggle = document.createElement('a');
             toggle.href = 'javascript:void(0)';
             toggle.className = 'read-more d-inline-block mt-2';
-            toggle.textContent = 'Leer más';
+            toggle.textContent = 'Leer Descripción';
 
             toggle.addEventListener('click', () => {
                 const expanded = content.classList.toggle('expanded');
