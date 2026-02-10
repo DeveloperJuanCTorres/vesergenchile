@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Grupo Vesergenchile') }}</title>
 
     <?php
-        $version = '1993.3.7';
+        $version = '1993.3.1';
     ?>
 
     <!-- Fonts -->

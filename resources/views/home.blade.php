@@ -401,58 +401,39 @@
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
 
-    document.querySelectorAll('.product-description').forEach(wrapper => {
+        document.querySelectorAll('.product-description').forEach(wrapper => {
 
-        const maxChars = parseInt(wrapper.dataset.maxChars || 500);
-        const content = wrapper.querySelector('.description-content');
+            const maxChars = parseInt(wrapper.dataset.maxChars || 500);
+            const content = wrapper.querySelector('.description-content');
 
-        const fullHTML = content.innerHTML.trim();
-        const temp = document.createElement('div');
-        temp.innerHTML = fullHTML;
+            const fullHTML = content.innerHTML;
+            const temp = document.createElement('div');
+            temp.innerHTML = fullHTML;
 
-        const fullText = temp.textContent.trim();
+            const textLength = temp.textContent.trim().length;
 
-        if (fullText.length <= maxChars) return;
+            if (textLength <= maxChars) return;
 
-        let visibleText = fullText.slice(0, maxChars);
-        let hiddenText = fullText.slice(maxChars);
+            content.classList.add('collapsed');
 
-        // Crear elementos
-        const visibleSpan = document.createElement('span');
-        visibleSpan.textContent = visibleText;
+            const toggle = document.createElement('a');
+            toggle.href = 'javascript:void(0)';
+            toggle.className = 'read-more d-inline-block mt-2';
+            toggle.textContent = 'Leer más';
 
-        const hiddenSpan = document.createElement('span');
-        hiddenSpan.textContent = hiddenText;
-        hiddenSpan.style.display = 'none';
+            toggle.addEventListener('click', () => {
+                const expanded = content.classList.toggle('expanded');
+                toggle.textContent = expanded ? 'Leer menos' : 'Leer más';
+            });
 
-        const dots = document.createElement('span');
-        dots.textContent = '... ';
-
-        const toggle = document.createElement('span');
-        toggle.textContent = 'Leer más';
-        toggle.className = 'read-more';
-
-        toggle.addEventListener('click', () => {
-            const expanded = hiddenSpan.style.display === 'none';
-            hiddenSpan.style.display = expanded ? 'inline' : 'none';
-            dots.style.display = expanded ? 'none' : 'inline';
-            toggle.textContent = expanded ? 'Leer menos' : 'Leer más';
+            wrapper.appendChild(toggle);
         });
 
-        // Limpiar y reconstruir
-        content.innerHTML = '';
-        content.appendChild(visibleSpan);
-        content.appendChild(dots);
-        content.appendChild(hiddenSpan);
-        content.appendChild(document.createElement('br'));
-        content.appendChild(toggle);
-
     });
-
-});
 </script>
+
 
 
 

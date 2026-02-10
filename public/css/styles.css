@@ -541,19 +541,23 @@
 
 
 
-.product-description {
-    font-size: 15px;
-    line-height: 1.6;
+.description-content.collapsed {
+    max-height: 7.5em; /* ≈ 500 chars */
+    overflow: hidden;
+    position: relative;
 }
 
-.read-more {
-    color: #0d6efd;
-    cursor: pointer;
-    font-weight: 600;
+.description-content.collapsed::after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: white;
+    padding-left: 10px;
 }
 
-.read-more:hover {
-    text-decoration: underline;
+.description-content.expanded {
+    max-height: none;
 }
 
 
