@@ -136,6 +136,6 @@
 </div>
 
 <!-- PAGINACION -->
-<div class="mt-4">
+<div class="mt-4 d-flex justify-content-center">
     {{ $products->withQueryString()->links() }}
 </div>
