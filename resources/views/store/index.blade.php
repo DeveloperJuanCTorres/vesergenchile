@@ -57,4 +57,38 @@ function sendWhatsapp(productId) {
 }
 </script>
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        document.querySelectorAll('.product-description').forEach(wrapper => {
+
+            const maxChars = parseInt(wrapper.dataset.maxChars || 500);
+            const content = wrapper.querySelector('.description-content');
+
+            const temp = document.createElement('div');
+            temp.innerHTML = content.innerHTML;
+
+            if (temp.textContent.trim().length <= maxChars) return;
+
+            // 🔥 colapsar desde el inicio
+            content.classList.add('collapsed');
+
+            const toggle = document.createElement('a');
+            toggle.href = 'javascript:void(0)';
+            toggle.className = 'read-more d-inline-block mt-2';
+            toggle.textContent = 'Leer Descripción';
+
+            toggle.addEventListener('click', () => {
+                const expanded = content.classList.toggle('expanded');
+                content.classList.toggle('collapsed');
+                toggle.textContent = expanded ? 'Ocultar Descripción' : 'Leer Descripción';
+            });
+
+            wrapper.appendChild(toggle);
+        });
+
+    });
+</script>
+
 @endsection
