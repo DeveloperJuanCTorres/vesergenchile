@@ -46,10 +46,14 @@
                                 $ {{ number_format($product->price, 3) }}
                             </span>
 
-                            <span class="product-stock">
-                                Stock: {{$product->stock}}
-                            </span>
+                            <span class="product-price">
+                                USD {{ number_format($product->price_dolar, 2) }}
+                            </span>                            
                         </div>
+
+                        <span class="product-stock ms-auto d-block text-end mb-2">
+                            Stock: {{$product->stock}}
+                        </span>
 
                         <!-- BOTONES -->
                         <div class="d-flex gap-2">

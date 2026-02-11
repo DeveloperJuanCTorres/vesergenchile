@@ -15,7 +15,8 @@ class Product extends Model
         'price',
         'stock',
         'images',
-        'slug'
+        'slug',
+        'price_dolar'
     ];
 
     public function brand()
