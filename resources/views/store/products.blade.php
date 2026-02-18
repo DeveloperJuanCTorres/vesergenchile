@@ -94,7 +94,7 @@
                                 </div>
 
                                 <h4 class="mt-3 text-success">
-                                    $ {{ number_format($product->price, 2) }} - USD {{ number_format($product->price_dolar, 2) }}
+                                    $ {{ number_format($product->price * $company->tipo_cambio, 3) }} - USD {{ number_format($product->price, 2) }}
                                 </h4>
 
                                 <p class="text-muted">
